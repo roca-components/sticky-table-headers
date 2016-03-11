@@ -1,7 +1,8 @@
-(Sticky Table Headers)[https://github.com/roca-components/sticky-table-headers]
-===============================================================================
+Sticky Table Headers
+====================
 
-A ROCA component that makes horizontal and/or vertical table headers sticky.
+A [ROCA](http://roca-style.org) component that makes horizontal and/or vertical
+table headers sticky.
 
 Based on [ES6 seed](https://github.com/FND/es6-seed).
 
