@@ -1,0 +1,22 @@
+extends ./_layout.jade
+
+block title
+  | Sticky Table Headers Demo
+
+block content
+  - var cols = []; for (var i = 1; i <= 20; i++) { cols.push("Col&nbsp;" + i); };
+  - var rows = []; for (var i = 1; i <= 20; i++) { rows.push("Row&nbsp;" + i); };
+  div(is="sticky-headers")
+      table.table.table-bordered
+        thead
+          tr
+            th.sticky-col-header.sticky-row-header Row/Col
+            each col in cols
+              th.sticky-row-header!= col
+        tbody
+          each row in rows
+            tr
+              th.sticky-col-header!= row
+              each col in cols
+                td yoyoyoyoyo
+

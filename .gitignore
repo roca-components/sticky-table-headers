@@ -2,3 +2,4 @@
 /.eslintcache
 
 /dist
+/test/galen/reports
