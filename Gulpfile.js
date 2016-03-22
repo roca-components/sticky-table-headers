@@ -30,6 +30,10 @@ gulp.task("webpack", function() {
     .pipe(gulp.dest(distDir));
 });
 
+gulp.task("webpack:watch", function() {
+  gulp.watch("src/**/*.js", ["webpack"]);
+});
+
 gulp.task("lint", function() {
   return gulp.src(["**/*.js", "!node_modules/**", "!dist/**", "!test/galen/reports/**"])
     .pipe(eslint())
@@ -39,7 +43,8 @@ gulp.task("lint", function() {
 
 gulp.task("jade", function() {
   const LOCALS = {
-    bootstrapCss: "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+    bootstrapCss: "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css",
+    customElementsPolyfill: "//cdnjs.cloudflare.com/ajax/libs/document-register-element/0.5.3/document-register-element.js"
   };
 
   gulp.src(jadeDir)
@@ -71,6 +76,6 @@ gulp.task("test:galen", ["serve"], function() {
 
 gulp.task("test", ["lint", "test:galen"]);
 
-gulp.task("watch", ["sass:watch", "jade:watch"]);
+gulp.task("watch", ["sass:watch", "jade:watch", "webpack:watch"]);
 
 gulp.task("default", ["sass", "webpack", "jade"]);

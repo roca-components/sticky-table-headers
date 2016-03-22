@@ -6,7 +6,6 @@ html
     link(href=bootstrapCss, rel='stylesheet')
     link(href='../base.css', rel='stylesheet')
     link(href='../bootstrap-4.css', rel='stylesheet')
-    script(src='../bundle.js')
   body
     .container
       .header.clearfix
@@ -19,3 +18,9 @@ html
         h3.text-muted
           block title
       block content
+
+    script.
+      if(!document.registerElement) {
+        document.write('<script src="!{customElementsPolyfill}"><\/script>');
+      }
+    script(src='../bundle.js')
