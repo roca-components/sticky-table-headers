@@ -2,9 +2,9 @@
   "name": "roca-sticky-table-headers",
   "version": "0.0.1",
   "scripts": {
-    "start": "node_modules/.bin/gulp watch",
-    "test": "node_modules/.bin/gulp test",
-    "compile": "node_modules/.bin/gulp"
+    "start": "./node_modules/.bin/gulp watch",
+    "test": "./node_modules/.bin/gulp test",
+    "compile": "./node_modules/.bin/gulp"
   },
   "dependencies": {},
   "devDependencies": {
