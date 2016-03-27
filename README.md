@@ -1,6 +1,8 @@
 Sticky Table Headers
 ====================
 
+[![Build Status](https://travis-ci.org/roca-components/sticky-table-headers.svg?branch=master)](https://travis-ci.org/roca-components/sticky-table-headers)
+
 A [ROCA](http://roca-style.org) component that makes horizontal and/or vertical
 table headers sticky.
 
