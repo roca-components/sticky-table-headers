@@ -9,8 +9,8 @@ StickyHeadersElement.attachedCallback = function() {
   this._oldX = 0;
   this._oldY = 0;
 
-  this.addEventListener("scroll", event => this.handleScroll(event));
-}
+  this.addEventListener("scroll", (event) => this.handleScroll(event));
+};
 
 StickyHeadersElement.handleScroll = function(event) {
   let left = this.scrollLeft;
@@ -27,7 +27,7 @@ StickyHeadersElement.handleScroll = function(event) {
   }
 
   this.updateInlineStyles();
-}
+};
 
 StickyHeadersElement.updateInlineStyles = function() {
   if (this._oldX !== this._x) {
@@ -39,7 +39,7 @@ StickyHeadersElement.updateInlineStyles = function() {
   this.setTranslate(".sticky-col-header.sticky-row-header", this._x, this._y, 4);
   this._oldX = this._x;
   this._oldY = this._y;
-}
+};
 
 StickyHeadersElement.setTranslate = function(selector, x, y, z) {
   let elements = this.querySelectorAll(selector);
@@ -49,6 +49,6 @@ StickyHeadersElement.setTranslate = function(selector, x, y, z) {
     elements[index].style.transform = transl;
     elements[index].style.webkitTransform = transl;
   }
-}
+};
 
 export default StickyHeadersElement;
