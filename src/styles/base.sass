@@ -1,26 +1,26 @@
 .sticky-headers-wrapper, sticky-headers, [is=sticky-headers]
   margin: 0 auto
+  padding: 0
   overflow: scroll
 
-  table
+  > table
     table-layout: fixed
+
+    //Collapsing borders won't work when translating <td>s
     border-collapse: separate
+    //Border spacing won't work with this approach since the space is transparent
+    border-spacing: 0
+
     transform-style: preserve-3d
     -webkit-transform-style: preserve-3d
 
+    // Removing upper borders since using `border-collapse: separate` would lead to
+    // border lines with double width
     tr:not(:first-child) td,
     tr:not(:first-child) th
       border-top: 0 !important
 
+    // Removing all left borders to avoid double width lines
     tr td:not(:first-child),
     tr th:not(:first-child)
       border-left: 0 !important
-
-    .sticky-col-header
-      z-index: 90
-
-    .sticky-row-header
-      z-index: 100
-
-    .sticky-col-header.sticky-row-header
-      z-index: 110

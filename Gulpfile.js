@@ -9,7 +9,7 @@ var eslint = require("gulp-eslint");
 var gulpGalen = require("gulp-galen");
 var gls = require("gulp-live-server");
 
-const sassDir = "src/*.sass";
+const sassDir = "src/styles/*.sass";
 const jadeDir = "./**/[^_]*.jade";
 const distDir = "./dist";
 const webpackConfig = require("./webpack.config.js");
@@ -74,8 +74,10 @@ gulp.task("test:galen", ["serve"], function() {
   }));
 });
 
-gulp.task("test", ["lint", "test:galen"]);
+gulp.task("test", ["compile", "lint", "test:galen"]);
 
 gulp.task("watch", ["sass:watch", "jade:watch", "webpack:watch"]);
 
-gulp.task("default", ["sass", "webpack", "jade"]);
+gulp.task("compile", ["sass", "webpack", "jade"]);
+
+gulp.task("default", ["compile"])
