@@ -58,26 +58,37 @@ gulp.task("jade:watch", function() {
   gulp.watch("./**/*.jade", ["jade"]);
 });
 
-gulp.task("serve", function() {
-  var server = gls.static(distDir, 3123);
-  server.start();
+var server;
 
+gulp.task("serve", function(done) {
+  server = gls.static(distDir, 3123);
+  server.start();
+  done();
+});
+
+gulp.task("serve:watch", function() {
   gulp.watch([distDir + "/**/*.*"], function(file) {
-    server.notify([file]);
+    server && server.notify([file]);
   });
 });
 
-gulp.task("test:galen", ["serve"], function() {
-  gulp.src(["test/galen/**/*.test", "!test/galen/reports/**"]).pipe(gulpGalen.test({
+gulp.task("test:galen_without_server", function() {
+  return gulp.src(["test/galen/**/*.test", "!test/galen/reports/**"]).pipe(gulpGalen.test({
     htmlreport: "reports/{relative}",
     cwd: "test/galen/"
   }));
 });
 
+gulp.task("test:galen", ["serve", "test:galen_without_server"], function() {
+  if (server) {
+    return server.stop();
+  }
+});
+
 gulp.task("test", ["compile", "lint", "test:galen"]);
 
-gulp.task("watch", ["sass:watch", "jade:watch", "webpack:watch"]);
+gulp.task("watch", ["compile", "serve", "serve:watch", "sass:watch", "jade:watch", "webpack:watch"]);
 
 gulp.task("compile", ["sass", "webpack", "jade"]);
 
-gulp.task("default", ["compile"])
+gulp.task("default", ["compile"]);
