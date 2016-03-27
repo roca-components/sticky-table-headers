@@ -72,7 +72,7 @@ gulp.task("serve:watch", function() {
   });
 });
 
-gulp.task("test:galen_without_server", function() {
+gulp.task("test:galen_without_server", ["compile"], function() {
   return gulp.src(["test/galen/**/*.test", "!test/galen/reports/**"]).pipe(gulpGalen.test({
     htmlreport: "reports/{relative}",
     cwd: "test/galen/"
@@ -85,7 +85,7 @@ gulp.task("test:galen", ["serve", "test:galen_without_server"], function() {
   }
 });
 
-gulp.task("test", ["compile", "lint", "test:galen"]);
+gulp.task("test", ["lint", "test:galen"]);
 
 gulp.task("watch", ["compile", "serve", "serve:watch", "sass:watch", "jade:watch", "webpack:watch"]);
 
