@@ -18,10 +18,10 @@
     left-of container
 
   container.table.last-col-header:
-    inside container ~0px top right
+    inside container ~0px top, 0 to 20px right
 
   container.table.first-row-header:
     above container
 
   container.table.last-row-header:
-    inside container 0 to 20px bottom, ~0px left
+    inside container 0 to 35px bottom, ~0px left
