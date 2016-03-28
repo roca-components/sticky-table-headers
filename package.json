@@ -1,8 +1,25 @@
 {
   "name": "roca-sticky-table-headers",
   "version": "0.0.1",
+  "description": "A ROCA component that makes horizontal and/or vertical table headers sticky",
   "license": "Apache-2.0",
+  "contributors": [
+    "Roman Stranghöner",
+    "Till Schulte-Coerne <npmjs@trsnet.de> (https://github.com/tillsc)",
+    "Frederik Dohr"
+  ],
   "homepage": "https://github.com/roca-components/sticky-table-headers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roca-components/sticky-table-headers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/roca-components/sticky-table-headers/issues"
+  },
+  "files": [
+    "dist/**/*.*", "src/**/*.*",
+    "index.js", "README.md", "LICENSE", "package.json"
+  ],
   "scripts": {
     "start": "./node_modules/.bin/gulp watch",
     "test": "./node_modules/.bin/gulp test",
