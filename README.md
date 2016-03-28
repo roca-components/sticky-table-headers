@@ -9,14 +9,53 @@ table headers sticky.
 
 Based on [ES6 seed](https://github.com/FND/es6-seed).
 
+Usage
+-----
 
-Getting Started
----------------
+Run `npm install roca-sticky-table-headers -save`.
+
+This will install everithing under `node_modules/roca-sticky-table-headers`.
+
+This contains the following files and directories:
+
+```
+├── dist                       # Compiled files
+│   ├── base.css               # CSS base functionality
+│   ├── bootstrap-4.css        # Bootstrap 4 theme
+│   ├── bundle.js              # ES5 Custom Element `sticky-headers`
+│   └── examples               # HTML Examples
+└── src
+    ├── scripts                # ES6 source files
+    └── styles                 # SASS source files
+```
+
+Include scripts and styles and use the following HTML structure:
+
+```html
+<div is="">
+ <table>
+  <tr>
+   <!-- First row sticky -->
+   <th class="sticky-row-header sticky-col-header">Upper Left</th>
+   <th class="sticky-row-header">Column Header</th>
+   ...
+  </tr>
+  <tr>
+   <!-- First column sticky -->
+   <th class="sticky-col-header"></th>
+   <td>...</td>
+   ...
+  <th>
+ </table>
+</div>
+```
+
+It is possible to use multiple fixed rows or cols.
+
+Development
+-----------
 
 * ensure [Node](http://nodejs.org) is installed
-* ensure [galenframework-cli](https://www.npmjs.com/package/galenframework-cli)
-  is installed and running with Chrome
-* ensure [gulp](http://gulpjs.com) is installed
 * `npm install` downloads dependencies
 * `npm run compile` performs a one-time compilation, generating files in `dist`
 * `npm start` automatically recompiles while monitoring code changes
