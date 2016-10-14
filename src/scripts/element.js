@@ -13,18 +13,8 @@ StickyHeadersElement.attachedCallback = function() {
 };
 
 StickyHeadersElement.handleScroll = function(event) {
-  let left = this.scrollLeft;
-  let top = this.scrollTop;
-
-  // Horizontal scroll
-  if (this._x !== left) {
-    this._x = left;
-  }
-
-  // Vertical scroll
-  if (this._y !== top) {
-    this._y = top;
-  }
+  this._x = this.scrollLeft;
+  this._y = this.scrollTop;
 
   this.updateInlineStyles();
 };
