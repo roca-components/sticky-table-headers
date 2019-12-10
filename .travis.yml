@@ -1,6 +1,12 @@
 addons:
-  chrome: stable
   firefox: latest
+
+env:
+  global:
+    - MOZ_HEADLESS=1
+
+services:
+  - xvfb
 
 language: node_js
 node_js:
