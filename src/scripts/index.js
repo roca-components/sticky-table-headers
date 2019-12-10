@@ -2,7 +2,6 @@
 
 import StickyHeadersElement from "./element";
 
-export default document.registerElement("sticky-headers", {
-  prototype: StickyHeadersElement,
-  extends: "div"
-});
+StickyHeadersElement.prototype.register();
+
+export default StickyHeadersElement;

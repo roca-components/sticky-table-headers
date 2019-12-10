@@ -1,4 +1,0 @@
-Table scrolled to bottom right
-    http://localhost:3123/examples/index.html 1024x800
-      inject scroll_to_bottom_right.js
-      check scrolled_to_bottom_right.gspec

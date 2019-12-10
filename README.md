@@ -14,7 +14,7 @@ Usage
 
 Run `npm install roca-sticky-table-headers -save`.
 
-This will install everithing under `node_modules/roca-sticky-table-headers`.
+This will install everything under `node_modules/roca-sticky-table-headers`.
 
 This contains the following files and directories:
 
@@ -32,7 +32,7 @@ This contains the following files and directories:
 Include scripts and styles and use the following HTML structure:
 
 ```html
-<div is="">
+<sticky-table>
  <table>
   <tr>
    <!-- First row sticky -->
@@ -47,7 +47,7 @@ Include scripts and styles and use the following HTML structure:
    ...
   <th>
  </table>
-</div>
+</sticky-table>
 ```
 
 It is possible to use multiple fixed rows or cols.

@@ -1,4 +1,4 @@
-extends ./_layout.jade
+extends ./_layout.pug
 
 block title
   | Sticky Table Headers Demo
@@ -6,7 +6,7 @@ block title
 block content
   - var cols = []; for (var i = 1; i <= 20; i++) { cols.push("Col&nbsp;" + i); };
   - var rows = []; for (var i = 1; i <= 30; i++) { rows.push("Row&nbsp;" + i); };
-  div(is="sticky-headers")
+    sticky-headers
       table.table.table-bordered
         thead
           tr
