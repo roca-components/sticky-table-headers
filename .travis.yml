@@ -4,3 +4,5 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 language: node_js
+node_js:
+  - "node"
