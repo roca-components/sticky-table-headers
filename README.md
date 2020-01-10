@@ -54,7 +54,7 @@ It is possible to use multiple fixed rows or cols.
 
 ### Responsive stickiness
 
-Use `<sticky-headers min-viewport-width="200px">` to disable column fixation for smaller screens or
+Use `<sticky-headers min-screen-width="200px">` to disable column fixation for smaller screens or
 `<sticky-headers min-container-width="200px">` to disable it based upon the container's width.
 
 Development

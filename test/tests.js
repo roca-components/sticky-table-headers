@@ -25,7 +25,7 @@ describe("test basic behaviour", function() {
     webdriver.assert(upperLeftNormalCellRect.y < tableRect.y, "First unfixed cell's left side (" + upperLeftNormalCellRect.y + ") is not right of table's left side (" + tableRect.y + ")");
   });
 
-  it("should not scroll fixed columns for smaller viewports", async function() {
+  it("should not scroll fixed columns for smaller screens", async function() {
     // Force a smaller window width
     await webdriver.driver.manage().window().setRect({ width: 640, height: 480 });
     // Scroll table to bottom right
