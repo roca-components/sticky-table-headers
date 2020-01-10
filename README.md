@@ -32,7 +32,7 @@ This contains the following files and directories:
 Include scripts and styles and use the following HTML structure:
 
 ```html
-<sticky-table>
+<sticky-headers>
  <table>
   <tr>
    <!-- First row sticky -->
@@ -47,10 +47,15 @@ Include scripts and styles and use the following HTML structure:
    ...
   <th>
  </table>
-</sticky-table>
+</sticky-headers>
 ```
 
 It is possible to use multiple fixed rows or cols.
+
+### Responsive stickiness
+
+Use `<sticky-headers min-viewport-width="200px">` to disable column fixation for smaller screens or
+`<sticky-headers min-container-width="200px">` to disable it based upon the container's width.
 
 Development
 -----------

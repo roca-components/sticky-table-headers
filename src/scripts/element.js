@@ -1,51 +1,81 @@
 /* eslint-env browser */
 
+import parseLengthExpression from "./length_values";
+
 export default class StickyHeadersElement extends HTMLElement {
   connectedCallback() {
     this._x = 0;
     this._y = 0;
 
-    this._oldX = 0;
-    this._oldY = 0;
-
     this.addEventListener("scroll", (event) => this.handleScroll(event));
+    if (window.ResizeObserver) {
+      this.resizeObserver = new ResizeObserver(() => this.handleResize());
+      this.resizeObserver.observe(this);
+    } else {
+      window.addEventListener("resize", () => this.handleResize());
+    }
+
+    this.attributeChangedCallback();
   };
 
-  handleScroll(event) {
-    const left = this.scrollLeft;
-    const top = this.scrollTop;
-
-    // Horizontal scroll
-    if (this._x !== left) {
-      this._x = left;
+  disconnectedCallback() {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
     }
+  }
 
-    // Vertical scroll
-    if (this._y !== top) {
-      this._y = top;
-    }
+  attributeChangedCallback() {
+    this.minContainerWith = parseLengthExpression(this.getAttribute("min-container-width"));
+    this.minScreenWith = parseLengthExpression(this.getAttribute("min-screen-width"));
 
-    this.updateInlineStyles();
-  };
+    this.lastColumnFixationActive = this.columnFixationActive();
+    this.handleScroll();
+  }
 
-  updateInlineStyles() {
-    if (this._oldX !== this._x) {
-      this.setTranslate(".sticky-col-header", this._x, 0, 0);
-    }
-    if (this._oldY !== this._y) {
-      this.setTranslate(".sticky-row-header", 0, this._y, 2);
-    }
-    this.setTranslate(".sticky-col-header.sticky-row-header", this._x, this._y, 4);
-    this._oldX = this._x;
-    this._oldY = this._y;
-  };
+  static get observedAttributes() {
+    return ["min-container-width", "min-screen-width"];
+  }
 
-  setTranslate(selector, x, y, z) {
-    const elements = this.querySelectorAll(selector);
-    const transl = "translate3d(" + x + "px, " + y + "px, " + z + "px)";
+  handleScroll() {
+    this._x = this.scrollLeft;
+    this._y = this.scrollTop;
+    const elements = this.querySelectorAll(".sticky-col-header, .sticky-row-header");
     for (let index = 0; index < elements.length; index++) {
-      elements[index].style.transform = transl;
-      elements[index].style.webkitTransform = transl;
+      const el = elements[index];
+      const classes = el.classList;
+      let x = 0;
+      let y = 0;
+      let z = 0;
+      if (this.lastColumnFixationActive && classes.contains("sticky-col-header")) {
+        x = this._x;
+        z++;
+      };
+      if (classes.contains("sticky-row-header")) {
+        y = this._y;
+        z++;
+      }
+      const transl = "translate3d(" + x + "px, " + y + "px, " + z + "px)";
+      el.style.transform = transl;
+      el.style.webkitTransform = transl;
+    }
+  };
+
+  handleResize() {
+    const columnFixationActive = this.columnFixationActive();
+    const changed = (columnFixationActive !== this.lastColumnFixationActive);
+    this.lastColumnFixationActive = columnFixationActive;
+    if (changed) {
+      this.handleScroll();
+    }
+  }
+
+  columnFixationActive() {
+    if (this.minContainerWith && this.clientWidth < this.minContainerWith) {
+      return false;
+    } else if (this.minScreenWith && ((window.innerWidth > 0) ? window.innerWidth : screen.width) < this.minScreenWith) {
+      return false;
+    } else {
+      return true;
     }
   };
 
