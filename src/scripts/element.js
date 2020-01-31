@@ -80,8 +80,8 @@ export default class StickyHeadersElement extends HTMLElement {
   };
 
   register(tagName = "sticky-headers", options = {}) {
-    if (customElements && customElements.define) {
-      customElements.define(tagName, StickyHeadersElement, options);
+    if (window.customElements && window.customElements.define) {
+      window.customElements.define(tagName, StickyHeadersElement, options);
     } else {
       console.log("Could not register StickyHeadersElement as '<" + tagName + ">'");
     }
