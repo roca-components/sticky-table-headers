@@ -1,6 +1,6 @@
 {
   "name": "roca-sticky-table-headers",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A ROCA component that makes horizontal and/or vertical table headers sticky",
   "license": "Apache-2.0",
   "contributors": [
